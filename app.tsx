@@ -8,20 +8,32 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   ScrollView,
-  Platform,
   Alert,
   StatusBar,
+  SafeAreaView,
+  Platform,
 } from 'react-native';
 
 
 // The chef selects one of these — they cannot type a new course.
 const COURSES = ['Starters', 'Mains', 'Desserts'];
 
+type MenuItem = {
+  id: string;
+  name: string;
+  description: string;
+  course: string;
+  price: number;
+};
+
 export default function App() {
   // ---- Menu data ----
-  // Every added dish lives in this single array, which is the "source of truth" the FlatList below renders from. Adding new item re-renders the list automatically because it is state.
-  const [menuItems, setMenuItems] = useState([]);
+  // Every added dish lives in this single array, which is the
+  // "source of truth" the FlatList below renders from. Adding a
+  // new item re-renders the list automatically because it is state.
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
 
+  // ---- Form field state (controlled inputs) ----
   const [dishName, setDishName] = useState('');
   const [description, setDescription] = useState('');
   const [selectedCourse, setSelectedCourse] = useState(COURSES[0]);
@@ -48,7 +60,9 @@ export default function App() {
       price: numericPrice,
     };
 
-    // Add the new dish to the existing array without mutating it directly. Using the array spread creates a new array reference, which is what triggers React to re-render the FlatList with the new item included.
+    // Add the new dish to the existing array without mutating it directly.
+    // Using the array spread creates a new array reference, which is what
+    // triggers React to re-render the FlatList with the new item included.
     setMenuItems((currentItems) => [...currentItems, newItem]);
 
     // Clear the form so the chef can immediately capture the next dish.
@@ -58,7 +72,7 @@ export default function App() {
     setSelectedCourse(COURSES[0]);
   };
 
-  const renderMenuItem = ({ item }) => (
+  const renderMenuItem = ({ item }: { item: MenuItem }) => (
     <View style={styles.menuCard}>
       <View style={styles.menuCardHeader}>
         <Text style={styles.menuCardName}>{item.name}</Text>
