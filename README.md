@@ -1,4 +1,4 @@
-# Christoffel's Kitchen — Functional App (Required Scope)
+# Christoffel's Kitchen — Functional App 
 
 A working Expo + TypeScript React Native app that lets the chef **add** a
 menu item and **view** every item added so far.
