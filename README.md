@@ -3,9 +3,7 @@
 A working Expo + TypeScript React Native app that lets the chef **add** a
 menu item and **view** every item added so far.
 
-This build intentionally stays within the required scope for this part of
-the PoE: **no editing, deleting, searching, filtering, or menu statistics**.
-Those are planned for the Final PoE.
+Full File Avilabile at: https://drive.google.com/drive/folders/1wqoHVP-2uUPIYnmm52gKrtZRNR3WUgVo?usp=sharing
 
 ## How to run it
 
